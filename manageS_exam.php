@@ -37,11 +37,15 @@ echo "<table class='showtable'>
  <td> Exam </td>
  </tr>";
 
+ $key = '123456789009876543212345678998765432';
+ $iv = '1234567890098765';
+ 
 foreach($row as $data){
+    $dec_exam = openssl_decrypt($data['exam'],'AES-256-CBC',$key,0,$iv);
     echo "<tr>
      <td style='padding:10px'>". $data['number'] ."</td>
-    <td>". $data['exam'] ."</td>
-    </tr>";
+     <td>". $dec_exam ."</td>
+     </tr>";
 }
 echo "</table>";
 ?>

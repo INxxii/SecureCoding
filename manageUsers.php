@@ -45,12 +45,19 @@ echo "<table class='showtable'>
 <td> edit </td>
 </tr>";
 
+$key = '123456789009876543212345678998765432';
+$iv = '1234567890098765';
+
 foreach($row as $data){
+    $dec_id = openssl_decrypt($data['ID'],'AES-256-CBC',$key,0,$iv);
+    $dec_username = openssl_decrypt($data['username'],'AES-256-CBC',$key,0,$iv); 
+    $dec_password = openssl_decrypt($data['password'],'AES-256-CBC',$key,0,$iv);
+    $dec_privilege = openssl_decrypt($data['privilege'], 'AES-256-CBC', $key,0, $iv);    
     echo "<tr>
-    <td style='padding:10px'>". $data['ID'] ."</td>
-    <td>". $data['username'] ."</td>
-    <td>". $data['password'] ."</td>
-    <td>". $data['privilege'] ."</td>
+    <td style='padding:10px'>". $dec_id ."</td>
+    <td>". $dec_username ."</td>
+    <td>". $dec_password ."</td>
+    <td>". $dec_privilege ."</td>
     <td> <a class='buttons' href=deleteUser.php?ID=".$data['ID'].">delete</a></td>
     <td> <a class='buttons' href=editUsers.php?ID=".$data['ID'].">edit</a></td> 
     </tr>";

@@ -14,10 +14,14 @@ require 'connection.php';
 if (isset($_POST['add'])) {
     $addUser = "INSERT INTO users(ID,username,password,privilege) VALUES(:ID,:username,:password,:privilege)";
     $statement = $pdo->prepare($addUser);
-    $ID = $_POST['ID'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $privilege = $_POST['privilege'];
+
+    $key = '123456789009876543212345678998765432';
+    $iv = '1234567890098765';
+    
+    $ID = openssl_encrypt($_POST['ID'],'AES-256-CBC',$key,0,$iv);
+    $username = openssl_encrypt($_POST['username'],'AES-256-CBC',$key,0,$iv);
+    $password = openssl_encrypt($_POST['password'],'AES-256-CBC',$key,0,$iv);
+    $privilege = openssl_encrypt($_POST['privilege'],'AES-256-CBC',$key,0,$iv);
 
     $statement->bindParam(":ID", $ID, PDO::PARAM_STR);
     $statement->bindParam(":username", $username, PDO::PARAM_STR);
@@ -27,8 +31,8 @@ if (isset($_POST['add'])) {
         $statement->execute();
         header("location:manageUsers.php");
         $pdo = null;
-    } catch (Exception) {
-        header("location:invalidUser.html");
+    } catch (Exception $e) {
+        header("location:invalidUser.php");
     }
 }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 12:10 AM
+-- Generation Time: Jan 25, 2023 at 04:34 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,8 +42,8 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`number`, `exam`, `question1`, `question2`, `question3`, `question4`, `question5`) VALUES
-(6, 'I dont know', 'What is the total of 4+4?', 'The result of 5*5?', 'What\'s is does \"m\" stand for in measurement units?', 'What is the true color of the sky?', 'what is what'),
-(7, 'mnm', 'What is the total of 4+4?', 'What is the total of 4+4?', 'What is the total of 4+4?', '', '');
+(28, 'ogo7eeVQ53nynDHHQSREeQ==', '7FW0hbU1CQQjuEcgSXzW6Krv23iykZ+u7C4FlgsAgs0=', 'aQB/5m7YPrgusbKPSo8/Y/QRNswFApIab3IWVVGmX8o=', 'lNEC9LOiJl1nre1KBa81Kzc0LBVT1mOA6MCA9vVNwjc=', '+51G7CuNPDHn4/LpPJgaRQ==', '+51G7CuNPDHn4/LpPJgaRQ=='),
+(30, 'DdfiXYwlegSNn8PXkz45iA==', 'lNEC9LOiJl1nre1KBa81Kzc0LBVT1mOA6MCA9vVNwjc=', 'aQB/5m7YPrgusbKPSo8/Y/QRNswFApIab3IWVVGmX8o=', '+51G7CuNPDHn4/LpPJgaRQ==', '+51G7CuNPDHn4/LpPJgaRQ==', '+51G7CuNPDHn4/LpPJgaRQ==');
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ INSERT INTO `exams` (`number`, `exam`, `question1`, `question2`, `question3`, `q
 
 CREATE TABLE `questions` (
   `number` int(255) NOT NULL,
-  `question` varchar(250) NOT NULL,
+  `question` varchar(255) NOT NULL,
   `option1` varchar(255) NOT NULL,
   `option2` varchar(255) NOT NULL,
   `option3` varchar(255) NOT NULL,
@@ -65,12 +65,11 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`number`, `question`, `option1`, `option2`, `option3`, `option4`) VALUES
-(1, '', '', '', '', ''),
-(12, 'What is the total of 4+4?', '8', '16', '0', '64'),
-(13, 'The result of 5*5?', '10', '25', '0', '15'),
-(14, 'What\'s is does \"m\" stand for in measurement units?', 'Miles', 'Meters', 'centimeters', 'milimeters'),
-(15, 'What is the true color of the sky?', 'blue', 'Haze orange', 'black', 'none of the other options'),
-(17, 'what is what', '123', '345', '654', '634');
+(0, '', '', '', '', ''),
+(23, '7FW0hbU1CQQjuEcgSXzW6Krv23iykZ+u7C4FlgsAgs0=', 'cr0Khg3Y8vFwDzCkRoHLWQ==', 'uf+oBCSxJXQ9PLCSVueW/Q==', 'u73aJ2FEcpl5b8pFpg9XEA==', 'nRj7iF7DkSeoLhZ5fDM7Uw=='),
+(26, 'aQB/5m7YPrgusbKPSo8/Y/QRNswFApIab3IWVVGmX8o=', 'HCSdiUMjLlTnzKN/fIkJnQ==', 'uf+oBCSxJXQ9PLCSVueW/Q==', '1QDVgMRQuvVQ+Bfg9rCdRw==', 'jJzbusw+hQ/0JMXIu5rDGw=='),
+(27, 'fw8sdj+qNIUDZA9BmyCeyal0r3NI6BiRjivpwQ2ufLA=', '3QWpFB3sV/8CTaKy1DJHYg==', 'tJIrA6LLDbKVJHyiVXpx0g==', '+51G7CuNPDHn4/LpPJgaRQ==', '+51G7CuNPDHn4/LpPJgaRQ=='),
+(31, 'lNEC9LOiJl1nre1KBa81Kzc0LBVT1mOA6MCA9vVNwjc=', 'd/IQ6Nb8NqPDlmxBAc9VMxVsWnlekeNwftBTYqrP8BA=', '7LfKN0pX27GO46fmEo5dLsXHCnX/dl4EGMeF5bK/5nY=', 'd/IQ6Nb8NqPDlmxBAc9VM0F66N7VADMOoUxe3KqL95k=', '+51G7CuNPDHn4/LpPJgaRQ==');
 
 -- --------------------------------------------------------
 
@@ -79,10 +78,10 @@ INSERT INTO `questions` (`number`, `question`, `option1`, `option2`, `option3`, 
 --
 
 CREATE TABLE `users` (
-  `ID` char(8) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `privilege` varchar(7) NOT NULL
+  `ID` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `privilege` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,9 +89,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `username`, `password`, `privilege`) VALUES
-('11111111', 'student', '123', 'student'),
-('12345678', 'Admin', '123', 'admin'),
-('22222222', 'teacher', '123', 'teacher');
+('5J5BUqd4We0V6uDDKG+uOA==', 'BfrlZ7caORxrKm7dMH4s5g==', '7cw8WAJ9qVFGhdNn3PARmQ==', 'BfrlZ7caORxrKm7dMH4s5g=='),
+('5KFz111+6N9yc5lNFVmuFQ==', '/QQlT/RTCvM0v1Zbf5ml4A==', '7cw8WAJ9qVFGhdNn3PARmQ==', '/QQlT/RTCvM0v1Zbf5ml4A=='),
+('GemJ8bJbDtFlLCAiUWHkQg==', 'oBModtg1DtmbtjzZghDCaQ==', '7cw8WAJ9qVFGhdNn3PARmQ==', '/QQlT/RTCvM0v1Zbf5ml4A=='),
+('pq88/eMGoUbnoa/dVVgJlA==', 'lLsWdKfyk+c1pZ9nWPl/Vw==', '7cw8WAJ9qVFGhdNn3PARmQ==', 'lLsWdKfyk+c1pZ9nWPl/Vw==');
 
 --
 -- Indexes for dumped tables
@@ -126,13 +126,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `number` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `number` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `number` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `number` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

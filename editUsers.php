@@ -14,9 +14,15 @@ require 'connection.php';
 if(isset($_POST['edit'])){
     $edit= "UPDATE users SET username=:username, password=:password, privilege=:privilege where ID=:ID";
     $statement=$pdo->prepare($edit);
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $privilege=$_POST['privilege'];
+
+    $key = '123456789009876543212345678998765432';
+    $iv = '1234567890098765';
+        
+    $ID = openssl_encrypt($_POST['ID'],'AES-256-CBC',$key,0,$iv);
+    $username = openssl_encrypt($_POST['username'],'AES-256-CBC',$key,0,$iv);
+    $password = openssl_encrypt($_POST['password'],'AES-256-CBC',$key,0,$iv);
+    $privilege = openssl_encrypt($_POST['privilege'],'AES-256-CBC',$key,0,$iv);
+    
     $statement->bindParam(":username",$username,PDO::PARAM_STR);
     $statement->bindParam(":password",$password,PDO::PARAM_STR);
     $statement->bindParam(":privilege",$privilege,PDO::PARAM_STR);

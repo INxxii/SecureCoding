@@ -4,11 +4,11 @@
 <style>
     body{
         margin: 0%;
-    background-color:#1b4332;
+    background-color:#081c15;
     
     }
     .container{
-        background-color: #081c15;
+        background-color: #1b4332;
         color: #fdf0d5;
         position: fixed;
         top: 25%;
@@ -21,24 +21,41 @@
     fieldset{
         border: 0cm;
     }
-#user{
-    width: 100%;
+#ID{
+    width: 620px;
     height: 30px;
+    background-color:transparent;
+    border:2px solid #081c15;
+    color: #fdf0d5;
+    border-radius: 4px;
 }
 #Pass{
-    width: 100%;
+    width: 620px;
     height: 30px;
+    background-color:transparent;
+    border:2px solid #081c15;
+    color: #fdf0d5;
+    border-radius: 4px;
 }
 button{
 width: 100%;
 height: 30px;
 text-align: center;
-
+background-color: transparent;
+border: 0ch;
+border-bottom: 3px solid #081c15;
+border-radius:10px ;
+color: #fdf0d5;
+font-size: 15px;
 }
-    form{
+button:hover{
+background-color: #081c15;
+}
+form{
         border: 50px;
     }
-    a{
+
+a{
     text-decoration: underline;
     font-style:none;
     color:black;
@@ -49,10 +66,10 @@ text-align: center;
         <form action="signin.php" method="post">
             <div class="container">
                 <fieldset action="">
-                    <label for="user">Username</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" id="user" name="username" placeholder=" Username" required><br><br>
-                    <label for="Pass">Password</label>
-                    <input type="password" id="Pass" name="password" placeholder=" Password" required><br><br>
+                    <label for="ID">ID</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    <input type="text" id="ID" name="ID" placeholder=" ID" required minlength="8" maxlength="8"><br><br>
+                    <label for="Pass">Password</label><br>
+                    <input type="password" id="Pass" name="password" placeholder=" Password" required><br><br><br><br><br>
                     <button type="submit" name="signin" >Sign In</button><br><br>
                 </fieldset>
             </form>

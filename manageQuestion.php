@@ -1,5 +1,8 @@
 <?php
 session_start();
+$key = '123456789009876543212345678998765432';
+$iv = '1234567890098765';
+
 if(!isset($_SESSION['LOGGED'])){
     header("location:signin.html");
 }
@@ -46,13 +49,18 @@ echo "<table class='showtable'>
 </tr>";
 
 foreach($row as $data){
+    $dec_question = openssl_decrypt($data['question'],'AES-256-CBC',$key,0,$iv);
+    $dec_option1 = openssl_decrypt($data['option1'],'AES-256-CBC',$key,0,$iv);
+    $dec_option2 = openssl_decrypt($data['option2'],'AES-256-CBC',$key,0,$iv);
+    $dec_option3 = openssl_decrypt($data['option3'],'AES-256-CBC',$key,0,$iv);
+    $dec_option4 = openssl_decrypt($data['option4'],'AES-256-CBC',$key,0,$iv);
     echo "<tr>
     <td style='padding:10px'>". $data['number'] ."</td>
-    <td>". $data['question'] ."</td>
-    <td>". $data['option1'] ."</td>
-    <td>". $data['option2'] ."</td>
-    <td>". $data['option3'] ."</td>
-    <td>". $data['option4'] ."</td>
+    <td>". $dec_question ."</td>
+    <td>". $dec_option1."</td>
+    <td>". $dec_option2 ."</td>
+    <td>". $dec_option3 ."</td>
+    <td>". $dec_option4 ."</td>
     <td> <a class='buttons' href=deleteQuestion.php?number=".$data['number'].">delete</a></td>
     <td> <a class='buttons' href=editQuestion.php?number=".$data['number'].">edit</a></td> 
     </tr>";

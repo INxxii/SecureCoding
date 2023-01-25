@@ -28,6 +28,9 @@ else if ($_SESSION['LOGGED']=='student'){
 
 <?php
 require 'connection.php';
+$key = '123456789009876543212345678998765432';
+$iv = '1234567890098765';
+
 $show="SELECT * FROM exams";
 $statement=$pdo->prepare($show);
 $statement->execute();
@@ -47,14 +50,20 @@ echo "<table class='showtable'>
 </tr>";
 
 foreach($row as $data){
+    $dec_exam = openssl_decrypt($data['exam'],'AES-256-CBC',$key,0,$iv);
+    $dec_question1 = openssl_decrypt($data['question1'],'AES-256-CBC',$key,0,$iv);
+    $dec_question2 = openssl_decrypt($data['question2'],'AES-256-CBC',$key,0,$iv);
+    $dec_question3 = openssl_decrypt($data['question3'],'AES-256-CBC',$key,0,$iv);
+    $dec_question4 = openssl_decrypt($data['question4'],'AES-256-CBC',$key,0,$iv);
+    $dec_question5 = openssl_decrypt($data['question5'],'AES-256-CBC',$key,0,$iv);
     echo "<tr>
     <td style='padding:10px'>". $data['number'] ."</td>
-    <td>". $data['exam'] ."</td>
-    <td>". $data['question1'] ."</td>
-    <td>". $data['question2'] ."</td>
-    <td>". $data['question3'] ."</td>
-    <td>". $data['question4'] ."</td>
-    <td>". $data['question5'] ."</td>
+    <td>". $dec_exam ."</td>
+    <td>". $dec_question1."</td>
+    <td>". $dec_question2 ."</td>
+    <td>". $dec_question3 ."</td>
+    <td>". $dec_question4 ."</td>
+    <td>". $dec_question5 ."</td>
     <td> <a class='buttons' href=deleteExam.php?number=".$data['number'].">delete</a></td>
     <td> <a class='buttons' href=editExam.php?number=".$data['number'].">edit</a></td>
     </tr>";
